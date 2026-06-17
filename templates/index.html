@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWalker VATSIM Radar</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div id="topbar">
+        <div class="brand">AEROFUSION AI RADAR</div>
+        <a class="radar-nav-btn" href="/">Dashboard</a>
+        <div id="radar-status" class="status-pill">Initializing...</div>
+    </div>
+
+    <div id="info-panel" class="info-panel">
+        <div class="close-btn" onclick="document.getElementById('info-panel').style.display='none'">✕</div>
+        <h2 id="panel-callsign" class="header">---</h2>
+        <div id="panel-content"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+requests
+python-dotenv
+beautifulsoup4
+psycopg2-binary
+faster-whisper
+SpeechRecognition
+PyAudio
+gunicorn

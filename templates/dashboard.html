@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWalker Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="dashboard-body">
+    <div class="dashboard-shell">
+        <aside class="dashboard-sidebar">
+            <div class="dashboard-logo">AEROFUSION AI</div>
+            <div class="dashboard-subtitle">Flight Operations Center</div>
+
+            <nav class="dashboard-nav">
+                <a class="nav-item active" href="/">Dashboard</a>
+                <a class="nav-item" href="/radar">VATSIM Radar</a>
+                <a class="nav-item" href="/analytics">Analytics</a>
+                <a class="nav-item" href="/logout">Logout</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="label">SimBrief User</div>
+                <div class="value">{{ simbrief_id }}</div>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div>
+                    <h1>AeroFusion AI Operations Center</h1>
+                    <p>AI-Powered Flight Operations & Analytics Platform for MSFS and VATSIM.</p>
+                </div>
+
+                <button class="primary-button" onclick="window.location.href='/radar'">
+                    Open VATSIM Radar
+                </button>
+            </header>
+
+            <section class="dashboard-grid-main">
+                <div class="dash-card wide">
+                    <div class="card-title">Flight Plan</div>
+
+                    <div class="route-large">
+                        <span id="dash-origin">----</span>
+                        <span class="route-arrow">→</span>
+                        <span id="dash-destination">----</span>
+                    </div>
+
+                    <div class="dash-two-col">
+                        <div>
+                            <div class="label">Callsign</div>
+                            <div id="dash-callsign" class="value big">----</div>
+                        </div>
+
+                        <div>
+                            <div class="label">Aircraft</div>
+                            <div id="dash-aircraft" class="value big">A350</div>
+                        </div>
+                    </div>
+
+                    <div class="label top-gap">Route</div>
+                    <div id="dash-route" class="mono dash-route">Loading SimBrief route...</div>
+                </div>
+
+                <div class="dash-card status-card">
+                    <div class="card-title">MSFS SimConnect Status</div>
+
+                    <div id="dash-sim-status" class="status-big standby">STANDBY</div>
+
+                    <div class="dash-stat-grid">
+                        <div>
+                            <div class="label">ALT</div>
+                            <div id="dash-alt" class="value">0 FT</div>
+                        </div>
+                        <div>
+                            <div class="label">GS</div>
+                            <div id="dash-gs" class="value">0 KT</div>
+                        </div>
+                        <div>
+                            <div class="label">VS</div>
+                            <div id="dash-vs" class="value">0 FPM</div>
+                        </div>
+                        <div>
+                            <div class="label">HDG</div>
+                            <div id="dash-hdg" class="value">000°</div>
+                        </div>
+                        <div>
+                            <div class="label">Squawk</div>
+                            <div id="dash-squawk" class="value">----</div>
+                        </div>
+                        <div>
+                            <div class="label">TOD</div>
+                            <div id="dash-tod-available" class="value">A350 Only</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="card-title">A350 TOD Calculator</div>
+
+                    <div class="tod-main" id="dash-tod-distance">0.0 NM</div>
+                    <div class="muted">Distance to Top of Descent</div>
+
+                    <div class="dash-stat-grid compact">
+                        <div>
+                            <div class="label">Time</div>
+                            <div id="dash-tod-time" class="value">0 MIN</div>
+                        </div>
+                        <div>
+                            <div class="label">Req Dist</div>
+                            <div id="dash-req-dist" class="value">0.0 NM</div>
+                        </div>
+                        <div>
+                            <div class="label">Req FPM</div>
+                            <div id="dash-req-fpm" class="value">0 FPM</div>
+                        </div>
+                        <div>
+                            <div class="label">Profile</div>
+                            <div id="dash-profile" class="value">A350 optimized</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="card-title">ATC AI Assistant</div>
+
+                    <div id="dash-atc-status" class="status-small">STANDBY</div>
+                    <div id="dash-atc-latest" class="atc-highlight">Waiting for ATC transcript...</div>
+
+                    <div id="dash-atc-history" class="atc-log-mini">
+                        > System ready.
+                    </div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="card-title">VATSIM Network</div>
+
+                    <div class="network-number" id="dash-pilots-online">---</div>
+                    <div class="muted">Pilots online</div>
+
+                    <div class="dash-stat-grid compact">
+                        <div>
+                            <div class="label">Controllers</div>
+                            <div id="dash-controllers-online" class="value">---</div>
+                        </div>
+
+                        <div>
+                            <div class="label">Radar</div>
+                            <div class="value">Ready</div>
+                        </div>
+                    </div>
+
+                    <button class="secondary-button" onclick="window.location.href='/radar'">
+                        View Live Radar
+                    </button>
+                </div>
+
+                <div class="dash-card weather-card wide">
+                    <div class="card-title">Flight Weather</div>
+
+                    <div class="weather-airports">
+                        <div>
+                            <div class="label">Departure Weather</div>
+                            <div id="weather-origin-title" class="value big">----</div>
+                        </div>
+
+                        <div>
+                            <div class="label">Arrival Weather</div>
+                            <div id="weather-destination-title" class="value big">----</div>
+                        </div>
+                    </div>
+
+                    <div class="weather-grid">
+                        <div>
+                            <div class="label top-gap">Departure METAR</div>
+                            <div id="dash-origin-metar" class="mono">Loading...</div>
+
+                            <div class="label top-gap">Departure TAF</div>
+                            <div id="dash-origin-taf" class="mono">Loading...</div>
+                        </div>
+
+                        <div>
+                            <div class="label top-gap">Arrival METAR</div>
+                            <div id="dash-destination-metar" class="mono">Loading...</div>
+
+                            <div class="label top-gap">Arrival TAF</div>
+                            <div id="dash-destination-taf" class="mono">Loading...</div>
+                        </div>
+                    </div>
+
+                    <div class="weather-query-row top-gap">
+                        <input id="weather-icao" class="dash-input" placeholder="Manual ICAO e.g. RCTP" maxlength="4">
+                        <button class="secondary-button small" onclick="loadManualWeather()">Query</button>
+                    </div>
+
+                    <div id="manual-weather-result" class="mono muted top-gap"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
