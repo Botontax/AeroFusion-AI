@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+instance/
+users.db
+.env
+temp_atc.wav

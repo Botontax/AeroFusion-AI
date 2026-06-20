@@ -117,6 +117,19 @@ async function loadDashboardData() {
         setText("dash-vs", `${data.vertical_speed || 0} FPM`);
         setText("dash-hdg", `${data.heading || "000"}°`);
         setText("dash-squawk", data.squawk || "----");
+        setText("dash-flight-phase", data.flight_phase || "SIM NOT CONNECTED");
+        setText("progress-origin", document.getElementById("dash-origin").innerText || "----");
+        setText("progress-destination", document.getElementById("dash-destination").innerText || "----");
+
+        const progress = data.flight_progress || 0;
+        setText("progress-percent", `${progress}%`);
+        setText("progress-distance", data.distance_to_dest_nm || "---");
+
+const fill = document.getElementById("flight-progress-fill");
+const plane = document.getElementById("flight-progress-plane");
+
+if (fill) fill.style.width = `${progress}%`;
+if (plane) plane.style.left = `${progress}%`;
 
         setText("dash-tod-available", data.tod_available ? "A350 READY" : "UNSUPPORTED");
         setText("dash-tod-distance", `${data.tod_distance_nm ?? "---"} NM`);

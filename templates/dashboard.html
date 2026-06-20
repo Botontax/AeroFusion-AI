@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyWalker Dashboard</title>
+    <title>AeroFusion AI Dashboard</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
@@ -94,6 +94,10 @@
                             <div class="label">TOD</div>
                             <div id="dash-tod-available" class="value">A350 Only</div>
                         </div>
+                        <div>
+                            <div class="label">Phase</div>
+                            <div id="dash-flight-phase" class="value">SIM NOT CONNECTED</div>
+                        </div>
                     </div>
                 </div>
 
@@ -124,13 +128,18 @@
                 </div>
 
                 <div class="dash-card">
-                    <div class="card-title">ATC AI Assistant</div>
+                    <div class="card-title">Future Development</div>
 
-                    <div id="dash-atc-status" class="status-small">STANDBY</div>
-                    <div id="dash-atc-latest" class="atc-highlight">Waiting for ATC transcript...</div>
+                    <div id="dash-atc-status" class="status-small">ROADMAP</div>
+                    <div id="dash-atc-latest" class="atc-highlight">
+                        AI ATC Assistant module planned for future versions.
+                    </div>
 
                     <div id="dash-atc-history" class="atc-log-mini">
-                        > System ready.
+                        &gt; Real-time VATSIM ATC transcription<br>
+                        &gt; AI clearance interpretation<br>
+                        &gt; Altitude, heading, speed and squawk parsing<br>
+                        &gt; Electronic Copilot integration
                     </div>
                 </div>
 

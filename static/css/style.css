@@ -526,9 +526,9 @@ html, body {
 
 .route-large {
     background: #202a35;
-    padding: 16px;
+    padding: 12px;
     border-radius: 12px;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 900;
     display: flex;
     justify-content: space-between;
@@ -547,7 +547,7 @@ html, body {
 }
 
 .value.big {
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .top-gap {
@@ -555,8 +555,9 @@ html, body {
 }
 
 .dash-route {
-    max-height: 90px;
+    max-height: 45px;
     overflow-y: auto;
+    font-size: 12px;
 }
 
 .status-big {
@@ -759,4 +760,71 @@ html, body {
     .analytics-grid {
         grid-template-columns: 1fr;
     }
+}
+/* Compact SimConnect status card */
+.status-card .dash-stat-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.status-card .dash-stat-grid > div {
+    padding: 10px;
+}
+
+.status-card .value {
+    font-size: 13px;
+}
+
+.status-big {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.dashboard-grid-main {
+    gap: 12px 18px;
+}
+.flight-progress-box {
+    margin-top: 14px;
+}
+
+.progress-label-row {
+    display: flex;
+    justify-content: space-between;
+    color: #dce6f1;
+    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.flight-progress-track {
+    position: relative;
+    height: 10px;
+    background: #111820;
+    border-radius: 999px;
+    overflow: visible;
+    border: 1px solid #34495e;
+}
+
+.flight-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #e67e22;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.flight-progress-plane {
+    position: absolute;
+    top: -13px;
+    left: 0%;
+    transform: translateX(-50%);
+    color: #f5b041;
+    font-size: 18px;
+    transition: left 0.4s ease;
+}
+
+.progress-distance {
+    margin-top: 8px;
+    color: #8e9aaf;
+    font-size: 12px;
 }
